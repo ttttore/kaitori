@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>強化買取 状態表記なし</title>
+	 <style>
+    .center{
+      width:500px;
+      margin: 0 auto;
+    }
+    body {
+  background-image: url("https://github.com/shibu3/test/blob/main/phonto.JPG?raw=true");
+  background-repeat: no-repeat;
+  background-position-x:  1px;
+  background-position-y:  1px;
+  background-size: 790px;
+}
+  </style>
+</head>
+<body>
+    <div style="position:absolute; top:230px; left:170px">
+		<img  id="image_url" src="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" width="450">
+	</div>
+
+	<div style="position:absolute; display: flex; align-items: center; text-align: center;  top:890px; left:210px; width:400px; height:150px; padding:0px;">	
+	<font face="Arial" color="#ff0000"><b><p style="font-size:104px"  id="cardprice">¥10,000</p></b></font>	
+	</div>
+
+	<div style="position:absolute; top:1150px; left:10px" >
+	画像URL: <input id="img_url"  type="text" style="width:500px;" value="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" /></br>
+	価格: <input id="card_price" type="text" style="width:80px;" value="¥10,000" />      　　　　　     　　　　　　　　	<input id="checkButton" type="button" value="画像更新" />
+	</br></br>
+	<button type="button" onclick="smaller()">小さく</button>
+	<button type="button" onclick="larger()">大きく</button>
+	</br></br></br></br><a href="https://htmlpreview.github.io/?https://github.com/shibu3/test/blob/main/imgurl/index.html">人気カードURL一覧</a><br><a href="https://htmlpreview.github.io/?https://github.com/shibu3/test/blob/main/kyokakaitori.html">【シングル】状態表記なし</a>　<a href="https://htmlpreview.github.io/?https://github.com/shibu3/test/blob/main/kyokakaitoriAB.html">【シングル】AS状態表記あり</a>　<a href="https://htmlpreview.github.io/?https://github.com/shibu3/test/blob/main/kyokakaitoriAB10man.html">【シングル】AS状態表記あり(SAで桁が違う)</a>　<a href="https://htmlpreview.github.io/?https://github.com/shibu3/test/blob/main/kyokakaitoriPSA10.html">【PSA】買取表</a>
+</br></br> 　
+	</div>
+
+<script>
+function butotnClick(){
+  image_url.innerText = img_url.value ;
+  cardprice.innerText = card_price.value ;
+}
+
+let img_url = document.getElementById('img_url');
+img_url.value = 'https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SAR_0.jpg';
+let image_url = document.getElementById('image_url');
+
+let card_price = document.getElementById('card_price');
+card_price.value = '¥99,990';
+let cardprice = document.getElementById('cardprice');
+
+
+let checkButton = document.getElementById('checkButton');
+checkButton.addEventListener('click', butotnClick);
+checkButton.addEventListener("click", ()=>{
+image_url.src = img_url.value;
+});
+
+</script>
+
+
+<script>
+  let y = 104;
+  function larger()  { y *= 1.05; document.getElementById('cardprice').style.fontSize = y + 'px'; }
+  function smaller() { y /= 1.05; document.getElementById('cardprice').style.fontSize = y + 'px'; }
+</script>
+
+
+</body>
+</html>
 
