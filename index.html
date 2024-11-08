@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>強化買取 状態表記なし</title>
+	<title>強化買取</title>
 	 <style>
     .center{
       width:500px;
@@ -26,12 +26,12 @@
 	<font face="Arial" color="#ff0000"><b><p style="font-size:98px"  id="cardprice"></p></b></font>	
 	</div>
 
-	<div style="position:absolute; top:600px; left:10px" >
+	<div style="position:absolute; top:470px; left:10px" >
 	画像URL: <input id="img_url"  type="text" style="width:500px;" value="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" /></br>
 	価格: <input id="card_price" type="text" style="width:80px;" value="¥10,000" />      　　　　　     　　　　　　　　	<input id="checkButton" type="button" value="画像更新" />
 	</br></br>
-	<button type="button" onclick="smaller()">小さく</button>
-	<button type="button" onclick="larger()">大きく</button>
+	<!-- <button type="button" onclick="smaller()">小さく</button>
+	<button type="button" onclick="larger()">大きく</button> -->
 	</div>
 
 <script>
@@ -59,7 +59,7 @@ function butotnClick(){
 }
 
 let img_url = document.getElementById('img_url');
-img_url.value = 'https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SAR_0.jpg';
+img_url.value = '';
 let image_url = document.getElementById('image_url');
 
 let card_price = document.getElementById('card_price');
