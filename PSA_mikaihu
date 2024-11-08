@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>強化買取  PSA10</title>
+	 <style>
+    .center{
+      width:500px;
+      margin: 0 auto;
+    }
+    body {
+  background-image: url("https://github.com/ttttore/kaitori/blob/main/img/%E5%BC%B7%E5%8C%96%E8%B2%B7%E5%8F%962@4x.png?raw=true");
+  background-repeat: no-repeat;
+  background-position-x:  1px;
+  background-position-y:  1px;  
+  background-size: 790px;
+}
+  </style>
+</head>
+<body>
+    <div style="position:absolute; top:15px; left: 280px">
+    <img  id="image_url" src="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" width="220">
+	</div>
+
+	<div style="position:absolute; display: flex; align-items: center; text-align: center;  top:280px; left:180px; width:400px; height:150px; padding:0px;">	
+    <font face="Arial" color="#000000"><b><p style="font-size:35px"  id="test">PSA10</p></b></font>	
+    </div>
+  
+    <div style="position:absolute; display: flex; align-items: center; text-align: center;  top:325px; left:210px; width:400px; height:150px; padding:0px;">	
+    <font face="Arial" color="#ff0000"><b><p style="font-size:70px"  id="cardprice"></p></b></font>	
+    </div>
+  
+    <div style="position:absolute; top:470px; left:10px" >
+    画像URL: <input id="img_url"  type="text" style="width:500px;" value="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" /></br>
+    価格: <input id="card_price" type="text" style="width:80px;" value="¥" />      　　　　　     　　　　　　　　	
+    <br></br>
+    <input id="checkButton" type="button" value="画像更新" />
+    <button onclick="buttonClicked()">未開封へ切り替え</button>
+    <button onclick="buttonClicked2()">PSA10へ切り替え</button>
+    </br></br>
+    </div>
+
+<script>
+function butotnClick(){
+  const price = card_price.value;
+  const number = parseFloat(price.replace(/,/g, '')) || 0;
+  let formattedNumber = "￥" + number.toLocaleString("ja-JP");
+  // ノンブレークスペースの文字を定義
+  const nbsp = String.fromCharCode(160);
+
+  // 桁数に応じて空白を追加
+  let  digitCount = price.replace(/,/g, '').length;
+   if (digitCount === 2) {
+     formattedNumber = nbsp.repeat(4) + formattedNumber; // 2桁なら空白4つ
+   } else if (digitCount === 3) {
+     formattedNumber = nbsp.repeat(3) + formattedNumber; // 3桁なら空白3つ
+   } else if (digitCount === 4) {
+     formattedNumber = nbsp.repeat(2) + formattedNumber;  // 4桁なら空白2つ
+   } else if (digitCount === 5) {
+     formattedNumber = nbsp.repeat(1) + formattedNumber;   // 5桁なら空白1つ
+   }
+  // 6桁以上は空白追加なし
+  image_url.innerText = img_url.value ;
+  cardprice.innerText = formattedNumber ;
+}
+
+function buttonClicked() {
+  test.innerText = "未開封";
+}
+
+function buttonClicked2() {
+  test.innerText = "PSA10";
+}
+
+let img_url = document.getElementById('img_url');
+img_url.value = '';
+let image_url = document.getElementById('image_url');
+
+let card_price1 = document.getElementById('card_price1');
+card_price.value = '';
+let cardprice1 = document.getElementById('cardprice1');
+
+
+let checkButton = document.getElementById('checkButton');
+checkButton.addEventListener('click', butotnClick);
+checkButton.addEventListener("click", ()=>{
+image_url.src = img_url.value;
+});
+
+</script>
+
+
+<script>
+  let y = 85;
+  function larger()  { y *= 1.01; document.getElementById('cardprice1').style.fontSize = y + 'px'; document.getElementById('cardprice2').style.fontSize = y + 'px'; }
+  function smaller() { y /= 1.01; document.getElementById('cardprice1').style.fontSize = y + 'px'; document.getElementById('cardprice2').style.fontSize = y + 'px';}
+</script>
+
+
+</body>
+</html>
