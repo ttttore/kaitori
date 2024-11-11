@@ -37,6 +37,8 @@
     <input id="checkButton" type="button" value="画像更新" />
     <button onclick="buttonClicked()">未開封へ切り替え</button>
     <button onclick="buttonClicked2()">PSA10へ切り替え</button>
+ 　 <button id = "resizeButton">画像を大きく</button>
+  　<button id = "resizeButton2">画像を小さく</button>
     </br></br>
     </div>
 
@@ -87,14 +89,26 @@ checkButton.addEventListener("click", ()=>{
 image_url.src = img_url.value;
 });
 
+let currentWidth = 220;
+
+document.getElementById("resizeButton").addEventListener("click", function() {
+const img = document.getElementById("image_url");
+
+  // 10px増加させる
+  currentWidth += 10;
+  img.style.width = currentWidth + "px";
+});
+
+document.getElementById("resizeButton2").addEventListener("click", function() {
+const img = document.getElementById("image_url");
+
+  // 10px増加させる
+  currentWidth -= 10;
+  img.style.width = currentWidth + "px";
+});
+
 </script>
 
-
-<script>
-  let y = 85;
-  function larger()  { y *= 1.01; document.getElementById('cardprice1').style.fontSize = y + 'px'; document.getElementById('cardprice2').style.fontSize = y + 'px'; }
-  function smaller() { y /= 1.01; document.getElementById('cardprice1').style.fontSize = y + 'px'; document.getElementById('cardprice2').style.fontSize = y + 'px';}
-</script>
 
 
 </body>
