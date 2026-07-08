@@ -18,7 +18,7 @@
   </style>
 </head>
 <body>
-    <div style="position:absolute; top:15px; left: 280px">
+    <div id="imageContainer" style="position:absolute; top:15px; left:280px">
 		<img  id="image_url" src="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" width="220">
 	</div>
 
@@ -26,7 +26,7 @@
 	<font face="Arial" color="#ff0000"><b><p style="font-size:85px"  id="cardprice"></p></b></font>	
 	</div>
 
-	<div style="position:absolute; display:flex; align-items:center; text-align:center; top:312px; left:420px; width:250px; height:80px; padding:0px;">
+	<div style="position:absolute; display:flex; align-items:center; text-align:center; top:312px; left:450px; width:250px; height:80px; padding:0px;">
   <font face="Arial" color="#ff0000">
     <b><p style="font-size:28px" id="limitedText"></p></b>
   </font>
@@ -35,12 +35,18 @@
 	<div style="position:absolute; top:500px; left:10px" >
 	画像URL: <input id="img_url"  type="text" style="width:500px;" value="https://www.cardrush-pokemon.jp/data/cardrushpokemon/product/SV1V_SR_0.jpg" /></br>
 	限定枚数: <input id="limited_count" type="text" style="width:80px;" />
-<input id="limitedButton" type="button" value="限定表示更新" />
 <br>
-	価格: <input id="card_price" type="text" style="width:80px;" value="¥10,000" />      　　　　　     　　　　　　　　	<input id="checkButton" type="button" value="画像更新" />
+	価格: <input id="card_price" type="text" style="width:80px;" value="¥10,000" />
+        <input id="checkButton" type="button" value="画像更新" />
  	<button id = "resizeButton">画像を大きく</button>
 	<button id = "resizeButton2">画像を小さく</button>
-	</br></br>
+	<br><br>
+
+	<button id="moveUp">↑</button>
+	<button id="moveLeft">←</button>
+	<button id="moveRight">→</button>
+	<button id="moveDown">↓</button>
+
 	</div>
 
 <script>
@@ -65,6 +71,13 @@ function butotnClick(){
   // 6桁以上は空白追加なし
   image_url.innerText = img_url.value ;
   cardprice.innerText = formattedNumber ;
+const count = limited_count.value.trim();
+
+if (count !== "") {
+    limitedText.innerText = `${count}枚限定!!`;
+} else {
+    limitedText.innerText = "";
+}
 }
 
 let img_url = document.getElementById('img_url');
@@ -83,6 +96,8 @@ image_url.src = img_url.value;
 });
 
 let currentWidth = 220;
+let currentTop = 15;
+let currentLeft = 280;
 
 document.getElementById("resizeButton").addEventListener("click", function() {
 const img = document.getElementById("image_url");
@@ -103,16 +118,33 @@ const img = document.getElementById("image_url");
 
 let limited_count = document.getElementById('limited_count');
 let limitedText = document.getElementById('limitedText');
-let limitedButton = document.getElementById('limitedButton');
 
-limitedButton.addEventListener('click', function() {
-  const count = limited_count.value;
-  if (count) {
-    limitedText.innerText = `${count}枚限定!!`;
-  } else {
-    limitedText.innerText = '';
-  }
+
+const imageContainer = document.getElementById("imageContainer");
+
+document.getElementById("moveUp").addEventListener("click", function() {
+    currentTop -= 10;
+    imageContainer.style.top = currentTop + "px";
 });
+
+document.getElementById("moveDown").addEventListener("click", function() {
+    currentTop += 10;
+    imageContainer.style.top = currentTop + "px";
+});
+
+document.getElementById("moveLeft").addEventListener("click", function() {
+    currentLeft -= 10;
+    imageContainer.style.left = currentLeft + "px";
+});
+
+document.getElementById("moveRight").addEventListener("click", function() {
+    currentLeft += 10;
+    imageContainer.style.left = currentLeft + "px";
+});
+
+const count = limited_count.value;
+limitedText.innerText = count ? `${count}枚限定!!` : '';
+
 
 </script>
 
